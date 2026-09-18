@@ -1,0 +1,31 @@
+DevSeva 0.5 — double-click Mac app (formerly Seva Desk)
+
+BEFORE YOU UPDATE
+1. Open the old Seva Desk and click Backup database. Save the backup somewhere safe, for example a USB drive.
+2. Quit Seva Desk completely, including mobile access.
+
+INSTALL
+3. Double-click DevSeva-0.5-Mac-App.zip to extract it (or use the DevSeva.app already extracted in this folder).
+4. Drag DevSeva.app into Applications. You can delete the old SevaDesk app from Applications after you have checked the new one. Do not run both at the same time.
+5. Double-click DevSeva. Because this is an unsigned prototype, macOS may block it the first time. If so, open System Settings > Privacy & Security, click Open Anyway, and confirm.
+
+No Terminal commands are needed. DevSeva uses the Python/Tk already on your Mac and the SAME database as Seva Desk (Library/Application Support/SevaDeskPrototype). Your existing event, sevas and bookings are kept. The database is upgraded automatically the first time DevSeva opens. After that, keep using DevSeva rather than the old app.
+
+WHAT'S NEW
+- Devotees tab: families, members, gotra, rashi, nakshatra, search and booking history.
+- One slip per family member, each with that person's own rashi and nakshatra.
+- Daily poojas: calendars with chosen weekdays, pooja dates and per-day seva limits.
+- Pooja schedule tab with a printable priest sheet.
+- Reports tab: collections by payment method, seva and day; unpaid balance; slip-level CSV.
+- Archive/restore for events and sevas, and booking search.
+- Phones get devotee search, per-member slips and a pooja date picker.
+Full details are in DevSeva.app > Contents > Resources > README.md.
+
+FIRST THINGS TO TRY
+- Masters: add "Temple daily poojas" as Type Daily, with days "All", and add a seva with a per-day limit.
+- Devotees: add your family and its members.
+- New booking > Find… > choose the family > Add every member > Save.
+- Pooja schedule: check the date, then Print priest sheet.
+- Your existing 25 Oct Sri Satyanarayana Pooja bookings appear on the schedule for 2026-10-25.
+
+If DevSeva does not open, it offers to show a diagnostic log (Library/Logs/DevSeva/launch.log). Send a screenshot of that log or of any macOS message for help.

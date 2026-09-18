@@ -1,0 +1,176 @@
+<!doctype html><!-- DevSeva — © 2026 Raviraj Shetty. All rights reserved. --><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#7a2e0e"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="DevSeva"><meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="/manifest.webmanifest?v=2"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2"><link rel="icon" href="/icon-192.png?v=2">
+<title>DevSeva</title><style>
+:root{--bg:#f6efe4;--card:#fff;--ink:#2f2118;--muted:#6b5a4a;--brand:#7a2e0e;--accent:#e58a00;--line:#e6d8c6;--soft:#f3e7d8;--radius:14px;--btn:12px;--font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans Kannada","Kannada Sangam MN",sans-serif}
+.ios{--radius:12px;--btn:12px;--font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Kannada Sangam MN",sans-serif}
+.android{--radius:16px;--btn:999px;--font:Roboto,"Google Sans","Noto Sans","Noto Sans Kannada",sans-serif}
+[hidden]{display:none!important}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html{-webkit-text-size-adjust:100%}
+body{font:16px/1.4 var(--font);background:var(--bg);color:var(--ink);margin:0}
+header{background:var(--brand);color:#fff;padding:calc(12px + env(safe-area-inset-top)) 16px 12px;position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px}
+.ios header{background:rgba(122,46,14,.95);-webkit-backdrop-filter:saturate(180%) blur(14px);backdrop-filter:saturate(180%) blur(14px)}
+.android header{box-shadow:0 2px 6px rgba(0,0,0,.25)}
+header img{width:36px;height:36px;border-radius:9px}header .t{flex:1;min-width:0}header h1{margin:0;font-size:19px;line-height:1.2}
+.ios header h1{font-weight:700;letter-spacing:-.2px}.android header h1{font-weight:500}
+header .sub{font-size:13px;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+header button.icon{width:auto;min-height:36px;margin:0;background:rgba(255,255,255,.18);color:#fff;padding:6px 12px;font-size:14px}
+main{max-width:660px;margin:auto;padding:12px 12px calc(92px + env(safe-area-inset-bottom))}
+section{background:var(--card);padding:16px;border-radius:var(--radius);margin-bottom:12px}
+.android section{box-shadow:0 1px 3px rgba(0,0,0,.14)}
+h2{margin:0 0 8px;font-size:18px}.ios h2{font-weight:700}.android h2{font-weight:500}
+label{display:block;margin:14px 0 6px;font-weight:600;font-size:15px}
+input,select,textarea,button{font:inherit;width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;color:inherit;min-height:46px}
+.android input,.android select,.android textarea{border-radius:8px;border-color:#cdbba8}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:0;border-color:transparent}
+button{background:var(--brand);color:#fff;border:0;margin-top:12px;cursor:pointer;border-radius:var(--btn);font-weight:600}
+.android button{font-weight:500;letter-spacing:.1px}
+button:active{filter:brightness(.9)}button:disabled{opacity:.5}
+.secondary{background:var(--soft);color:var(--brand)}
+input[type=checkbox]{width:22px;min-height:22px;height:22px;margin:0 10px 0 0;vertical-align:middle;accent-color:var(--brand)}
+small{color:var(--muted);display:block;margin-top:4px}
+.line{border-bottom:1px solid #eee;padding:8px 0}
+.pick{background:#fbf6ef;border:1px solid #e5d6c4;border-radius:10px;padding:10px;margin-top:8px}.pick button{margin-top:8px}
+.row{display:flex;gap:8px}.row>*{flex:1}
+.chosen{background:#e9f4ec;border:1px solid #9cc7a8;border-radius:10px;padding:10px;margin-top:8px}
+.card{border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;margin-top:10px;background:#fffdf9}
+.android .card{box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.card.UNPAID{border-left:6px solid #d99a00}.card.PAID{border-left:6px solid #2e8b57}.card.VOID,.card.REFUNDED{border-left:6px solid #999;opacity:.7}
+.card h3{margin:0 0 4px;font-size:18px}.badge{display:inline-block;padding:2px 9px;border-radius:10px;font-weight:700;font-size:13px;vertical-align:middle}
+.badge.UNPAID{background:#fff1cc}.badge.PAID{background:#d8f0df}.big{font-size:22px;font-weight:700;margin:4px 0}
+#message{white-space:pre-wrap;padding:12px 14px;font-weight:600;position:fixed;left:12px;right:12px;bottom:calc(74px + env(safe-area-inset-bottom));background:#2f2118;color:#fff;border-radius:12px;z-index:7;max-width:636px;margin:auto;box-shadow:0 6px 18px rgba(0,0,0,.28)}
+#message:empty{display:none}.android #message{border-radius:6px}
+nav#tabbar{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;background:rgba(255,255,255,.95);border-top:1px solid var(--line);padding:4px 8px calc(4px + env(safe-area-inset-bottom));z-index:6}
+.ios nav#tabbar{-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.android nav#tabbar{background:#fbf3ea;border-top:0;box-shadow:0 -1px 4px rgba(0,0,0,.08);padding-top:10px}
+nav#tabbar button{flex:1;max-width:240px;margin:0;background:none;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:3px;font-size:12px;min-height:54px;padding:4px}
+nav#tabbar svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+nav#tabbar button.active{color:var(--brand)}
+.android nav#tabbar button svg{width:64px;height:32px;padding:4px 20px;border-radius:16px}
+.android nav#tabbar button.active svg{background:#f1d6c6}
+.ac{position:relative}.sugg{position:absolute;left:0;right:0;top:100%;margin-top:4px;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 24px rgba(0,0,0,.16);max-height:264px;overflow:auto;z-index:8;-webkit-overflow-scrolling:touch}
+.sugg div{padding:12px 14px;border-bottom:1px solid #f3eadf}.sugg div.on{background:#fbefe2}.sugg div:last-child{border-bottom:0}
+.install{background:#fff7e8;border:1px solid #f0d9b5;border-radius:var(--radius);padding:12px 14px;margin-bottom:12px;font-size:14px}
+.install b{display:block;margin-bottom:2px;font-size:15px}.install button{width:auto;min-height:36px;padding:6px 14px;margin-top:8px}
+.evb{background:linear-gradient(135deg,var(--brand),#a3401a);color:#fff;border-radius:var(--radius);padding:14px 16px;margin:0 0 12px;box-shadow:0 2px 8px rgba(122,46,14,.25)}.evk{font-size:11px;font-weight:700;letter-spacing:.6px;color:#f2c14e}.evn{font-size:22px;font-weight:700;line-height:1.2;margin-top:2px}.evkn{font-size:16px;opacity:.9}.evw{font-size:13px;margin-top:6px;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}.evc{background:#f2c14e;color:#4a1606;border-radius:999px;padding:2px 10px;font-weight:700}footer.copy{text-align:center;font-size:12px;color:var(--muted);padding:18px 0 8px}
+#secure{font-size:14px;font-weight:600;margin-bottom:4px}.chosen a{color:var(--brand);font-weight:600}
+</style><header><img src="/apple-touch-icon.png?v=2" alt=""><div class="t"><h1>DevSeva / ದೇವಸೇವೆ</h1><div class="sub" id="sub">Counter & seva registration</div></div><button id="logoutBtn" class="icon" hidden onclick="logout()">Log out</button></header><main>
+<div id="install" class="install" hidden></div>
+<section id="login"><div id="secure"></div><div id="qrOk" class="chosen" hidden>✔ Connected by QR code — just enter your name and PIN. <a href="#" onclick="event.preventDefault();showCode()">Type the code instead</a></div><div id="codeBox"><label>Access code shown on the laptop</label><input id="code" autocomplete="off" autocapitalize="characters" enterkeyhint="next" placeholder="XXXX-XXXX-XXXX" onkeydown="if(event.key==='Enter'){event.preventDefault();$('staff').focus()}"></div><label>Your name / ಸಿಬ್ಬಂದಿ ಹೆಸರು</label><input id="staff" maxlength="60" autocomplete="username" enterkeyhint="next" onkeydown="if(event.key==='Enter'){event.preventDefault();$('pin').focus()}"><label>PIN / ಪಿನ್</label><input id="pin" type="password" inputmode="numeric" maxlength="12" autocomplete="current-password" enterkeyhint="go" onkeydown="if(event.key==='Enter')connect()"><button onclick="connect()">Log in / ಲಾಗಿನ್</button></section>
+<div id="work" hidden>
+<div id="evBanner" class="evb" hidden><div class="evk" id="evKind">EVENT / ಕಾರ್ಯಕ್ರಮ</div><div class="evn" id="evName"></div><div class="evkn" id="evKn"></div><div class="evw"><span id="evWhen"></span><span class="evc" id="evCount" hidden></span></div></div>
+<section><small id="role"></small>
+<label>Event / ಕಾರ್ಯಕ್ರಮ</label><select id="event" onchange="changeEvent()"></select>
+<div id="dateBox" hidden><label>Pooja date / ಪೂಜಾ ದಿನಾಂಕ</label><input id="service_date" type="date" onchange="refreshAvailability()"><small id="dateHint"></small></div>
+<small id="eventHint"></small></section>
+<section id="counterMode"><h2>Find booking / ಬುಕಿಂಗ್ ಹುಡುಕಿ</h2>
+<input id="find" type="search" enterkeyhint="search" maxlength="100" oninput="scheduleFind()" autocomplete="off" placeholder="Name, phone, email or booking no." style="font-size:20px">
+<div class="row"><button class="secondary" onclick="showUnpaid()">Show all unpaid</button><button class="secondary" onclick="$('find').value='';$('found').replaceChildren();$('find').focus()">Clear</button></div>
+<div id="found"></div></section>
+<div id="bookMode" hidden>
+<section><h2>Devotee / ಭಕ್ತರು</h2>
+<label>Find in devotee register (name, gotra or phone)</label><input id="search" maxlength="100" oninput="scheduleSearch()" autocomplete="off"><div id="results"></div>
+<div id="chosen" class="chosen" hidden><span id="chosenText"></span><button class="secondary" onclick="clearFamily()">Clear — walk-in devotee</button></div>
+<label>Devotee name / ಭಕ್ತರ ಹೆಸರು</label><input id="devotee" maxlength="200" oninput="scheduleKannada()">
+<label>Kannada name / ಕನ್ನಡ ಹೆಸರು (editable)</label><input id="devotee_kn" maxlength="200" oninput="kannadaEdited()"><small>Offline phonetic suggestion. Review the spelling before saving.</small><button class="secondary" onclick="regenerateKannada()">Regenerate Kannada suggestion</button>
+<div class="row"><div><label>Phone</label><input id="phone" maxlength="80" inputmode="tel" placeholder="Leave blank to use register number"></div><div><label>Gotra / ಗೋತ್ರ</label><input id="gotra" maxlength="100"></div></div>
+<label>Rashi / ರಾಶಿ</label><div class="ac"><input id="rashi" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type, e.g. kar → Karkataka"><div class="sugg" id="rashiSugg" hidden></div></div>
+<label>Nakshatra / ನಕ್ಷತ್ರ</label><div class="ac"><input id="nakshatra" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type, e.g. ash → Ashwini"><div class="sugg" id="nakshatraSugg" hidden></div></div>
+<label id="saveBox"><input type="checkbox" id="save_devotee">Save this new devotee to the register</label></section>
+<section><h2>Sevas / ಸೇವೆಗಳು</h2>
+<label>Seva / ಸೇವೆ</label><select id="seva" onchange="price()"></select><small id="avail"></small>
+<div id="personBox" hidden><label>Slip for / ಯಾರಿಗೆ</label><select id="person"></select></div>
+<div class="row"><div><label>Quantity</label><input id="quantity" type="number" min="1" max="100" value="1"></div><div><label>Amount each</label><input id="amount" type="number" min="0" step=".01"></div></div>
+<small>Fixed seva prices are set by the administrator. Sponsorship amounts are editable.</small>
+<button class="secondary" onclick="add()">Add seva / ಸೇರಿಸಿ</button><button class="secondary" id="addAll" hidden onclick="addAll()">Add one for every family member</button>
+<div id="cart"></div><button class="secondary" onclick="clearCart()">Clear selected sevas</button>
+<label>Notes / ಟಿಪ್ಪಣಿ · Describe in-kind goods here</label><textarea id="note" maxlength="1000"></textarea>
+<button id="submit" onclick="save()">Register and queue slips / ನೋಂದಾಯಿಸಿ</button><small>Printing is handled at the laptop. The cashier records payment separately.</small></section>
+</div></div>
+<div id="message" role="status" onclick="msg('')"></div><footer class="copy" id="copy">DevSeva · © 2026 Raviraj Shetty. All rights reserved.</footer></main>
+<nav id="tabbar" hidden>
+<button id="modeCounter" class="active" onclick="setMode('counter')"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>Counter · ಕೌಂಟರ್</span></button>
+<button id="modeBook" onclick="setMode('book')"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg><span>New booking · ನೋಂದಣಿ</span></button>
+</nav>
+<script>
+let catalog,token,staffName,lines=[],pending=null,family=null,left={},baseHint='';const $=id=>document.getElementById(id);const DAYS=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+let msgTimer=null;function msg(x){$('message').textContent=x;clearTimeout(msgTimer);if(x&&/^(✔|Connected|Sent|Booking #|Logged in again)/.test(x))msgTimer=setTimeout(()=>{if($('message').textContent===x)$('message').textContent=''},5000)}
+function randomKey(){let x=new Uint8Array(20);crypto.getRandomValues(x);return Array.from(x,v=>v.toString(16).padStart(2,'0')).join('')}
+async function api(path,data){let r=await fetch('/api/'+path,{method:data?'POST':'GET',headers:{Authorization:'Bearer '+token,'Content-Type':'application/json'},body:data?JSON.stringify(data):undefined});let j;try{j=await r.json()}catch(x){let e=Error('Unexpected reply from laptop.');e.retry=true;throw e}if(r.status===401&&token){sessionEnded();let e=Error(pending?'Your login expired. Log in again, then tap Retry same booking.':'Logged out. Log in again to continue.');e.retry=!!pending;throw e}if(!r.ok){let e=Error(j.error);e.retry=r.status>=500;throw e}return j}
+function sessionEnded(){token=null;$('work').hidden=true;$('tabbar').hidden=true;$('logoutBtn').hidden=true;$('sub').textContent='Counter & seva registration';$('login').hidden=false;$('pin').value='';msg('Logged out. Log in again to continue.')}
+async function logout(){if(pending)return msg('Retry the pending submission before logging out.');try{await api('logout',{})}catch(e){}token=null;location.reload()}
+function option(value,text){let o=document.createElement('option');o.value=value;o.textContent=text;return o}
+function locked(){if(pending){msg('Retry the pending submission before changing it.');return true}return false}
+async function connect(){try{let code=$('code').value.trim(),name=$('staff').value.trim(),pin=$('pin').value;if(!code||!name||!pin)throw Error('Enter the access code, your name and PIN.');let r=await api('login',{code,name,pin});token=r.token;staffName=r.name;try{localStorage.setItem('devseva-staff',r.name)}catch(e){}$('pin').value='';let wasPending=!!pending;catalog=await api('catalog');if(!catalog.events.length)throw Error('Ask the administrator to create an event first.');if(!wasPending){$('event').replaceChildren();catalog.events.filter(e=>catalog.sevas.some(s=>s.event_id===e.id)).forEach(e=>$('event').append(option(e.id,e.name+(e.kannada?' / '+e.kannada:'')+' · '+e.currency)));acLists.rashi=catalog.rashis;acLists.nakshatra=catalog.nakshatras;aliases=catalog.aliases||{};let up=catalog.events.filter(e=>e.recurrence!=='Daily'&&e.day>=catalog.today&&[...$('event').options].some(o=>o.value==e.id)).sort((a,b)=>a.day<b.day?-1:1)[0];if(up)$('event').value=up.id}$('login').hidden=true;$('install').hidden=true;$('work').hidden=false;$('tabbar').hidden=false;$('logoutBtn').hidden=false;$('sub').textContent=(catalog.org&&catalog.org.org_name)||(r.name+' · '+r.role);if(catalog.copyright)$('copy').textContent='DevSeva '+catalog.version+' · '+catalog.copyright;$('role').textContent='Logged in: '+r.name+' · '+r.role;setMode(wasPending?'book':'counter');if(!wasPending){clearFamily();changeEvent()}msg(wasPending?'Logged in again. Tap Retry same booking.':'Connected to laptop.')}catch(e){if(/access code/i.test(e.message)){try{sessionStorage.removeItem('devseva-code')}catch(x){}showCode()}msg(e.message)}}
+const UA=window.DEVSEVA_UA||navigator.userAgent,IOS=/iPhone|iPad|iPod/.test(UA)||(/Macintosh/.test(UA)&&navigator.maxTouchPoints>1),ANDROID=/Android/.test(UA);
+document.documentElement.classList.add(IOS?'ios':ANDROID?'android':'desktop');
+const STANDALONE=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+let installEvent=null;
+function showInstall(){if(STANDALONE||!(IOS||ANDROID)||$('login').hidden)return;let box=$('install');box.replaceChildren();
+let title=el('b','',IOS?'Add DevSeva to your Home Screen':'Install DevSeva on this phone');
+let how=el('div','',IOS?'In Safari tap the Share button (□↑), scroll and choose “Add to Home Screen”, then Add. Open DevSeva from its icon next time.':
+ 'In Chrome tap ⋮ (top right), then “Add to Home screen” or “Install app”. Open DevSeva from its icon next time.');
+box.append(title,how);if(installEvent){let b=el('button','','Install now');b.onclick=async()=>{installEvent.prompt();installEvent=null;box.hidden=true};box.append(b)}
+let x=el('button','secondary','Not now');x.onclick=()=>{box.hidden=true;try{localStorage.setItem('devseva-install-hidden','1')}catch(e){}};box.append(' ',x);
+try{if(localStorage.getItem('devseva-install-hidden'))return}catch(e){}box.hidden=false}
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();installEvent=e;showInstall()});
+let acLists={rashi:[],nakshatra:[]},aliases={};
+function rank(q,list){q=q.trim().toLowerCase().replace(/\s+/g,' ');if(!q)return list.slice();let out=[];list.forEach((c,i)=>{let t=c.toLowerCase(),al=(aliases[c]||'').split(' ').filter(Boolean),words=t.split(/[\s\/()]+/).concat(al);let sc=t.startsWith(q)?0:words.some(w=>w&&w.startsWith(q))?1:(t.includes(q)||al.some(w=>w.includes(q)))?2:-1;if(sc>=0)out.push([sc,i,c])});return out.sort((a,b)=>a[0]-b[0]||a[1]-b[1]).map(x=>x[2])}
+function setupAC(id){let inp=$(id),box=$(id+'Sugg');inp.addEventListener('input',()=>showAC(id));inp.addEventListener('focus',()=>showAC(id));inp.addEventListener('blur',()=>setTimeout(()=>{box.hidden=true;settleAC(id)},120));
+inp.addEventListener('keydown',e=>{let items=[...box.children],cur=items.findIndex(x=>x.classList.contains('on'));if(e.key==='Enter'&&!box.hidden&&items.length){e.preventDefault();pickAC(id,items[Math.max(cur,0)].dataset.v)}else if(e.key==='Escape'){box.hidden=true}else if((e.key==='ArrowDown'||e.key==='ArrowUp')&&items.length){e.preventDefault();let n=Math.min(items.length-1,Math.max(0,cur+(e.key==='ArrowDown'?1:-1)));items.forEach((x,i)=>x.classList.toggle('on',i===n));items[n].scrollIntoView({block:'nearest'})}})}
+function showAC(id){let inp=$(id),box=$(id+'Sugg'),list=acLists[id];if(list.includes(inp.value)){box.hidden=true;return}let m=rank(inp.value,list);box.replaceChildren(...m.map((c,i)=>{let d=el('div',i?'':'on',c);d.dataset.v=c;d.addEventListener('pointerdown',e=>{e.preventDefault();pickAC(id,c)});return d}));box.hidden=!m.length}
+function pickAC(id,v){$(id).value=v;$(id+'Sugg').hidden=true}
+function settleAC(id){let v=$(id).value.trim();if(!v||acLists[id].includes(v))return;let m=rank(v,acLists[id]);if(m.length)$(id).value=m[0]}
+function acValue(id,label){settleAC(id);let v=$(id).value.trim();if(v&&!acLists[id].includes(v))throw Error('Choose '+label+' from the suggestions (type a few letters).');return v}
+$('secure').textContent=location.protocol==='https:'?'🔒 Encrypted connection to the laptop':'⚠️ Not encrypted — use only on a private network you trust';
+function currentEvent(){return catalog.events.find(e=>e.id===$('event').value*1)}
+function changeEvent(){if(pending){msg('Retry the pending submission first.');return}lines=[];renderCart();let e=currentEvent();showBanner(e);$('seva').replaceChildren();catalog.sevas.filter(s=>s.event_id===e.id).forEach(s=>$('seva').append(option(s.id,s.name+(s.kannada?' / '+s.kannada:''))));let daily=e.recurrence==='Daily';$('dateBox').hidden=!daily||!$('counterMode').hidden;if(daily){let d=$('service_date');d.min=e.day;d.max=e.end_day||'';if(!d.value||d.value<e.day||(e.end_day&&d.value>e.end_day))d.value=nextAllowed(e);let days=e.weekdays==='0123456'?'every day':e.weekdays.split('').map(x=>DAYS[x]).join(', ');baseHint='Performed '+days+' · from '+e.day+(e.end_day?' to '+e.end_day:'');$('dateHint').textContent=baseHint;$('eventHint').textContent='Daily pooja at '+e.place}else{$('eventHint').textContent='Festival / event on '+e.day+' at '+e.place}price();refreshAvailability();if(!$('counterMode').hidden)refreshFound()}
+function countdown(e){let t=new Date(catalog.today+'T12:00:00Z'),a=new Date(e.day+'T12:00:00Z'),b=new Date((e.end_day||e.day)+'T12:00:00Z'),n=Math.round((a-t)/864e5);if(e.recurrence==='Daily')return n>0?'Starts in '+n+' days':(e.end_day&&t>b?'Ended':'Daily');if(t>=a&&t<=b)return +a===+b?'TODAY':'ON NOW · day '+(Math.round((t-a)/864e5)+1);return n===1?'Tomorrow':n>1?'in '+n+' days':'Finished'}
+function showBanner(e){if(!e){$('evBanner').hidden=true;return}let daily=e.recurrence==='Daily',d=new Date(e.day+'T12:00:00Z');$('evKind').textContent=daily?'DAILY POOJAS / ನಿತ್ಯ ಪೂಜೆ':'EVENT / ಕಾರ್ಯಕ್ರಮ';$('evName').textContent=e.name;$('evKn').textContent=e.kannada||'';$('evWhen').textContent=(daily?'📅 From ':'📅 ')+d.toLocaleDateString(undefined,{weekday:daily?undefined:'short',day:'numeric',month:'short',year:'numeric',timeZone:'UTC'})+(e.place?'  📍 '+e.place:'');let c=countdown(e);$('evCount').textContent=c;$('evCount').hidden=!c;$('evBanner').hidden=false;}
+function nextAllowed(e){let d=new Date((catalog.today>e.day?catalog.today:e.day)+'T12:00:00Z');for(let i=0;i<7;i++){let wd=(d.getUTCDay()+6)%7,iso=d.toISOString().slice(0,10);if(e.weekdays.includes(String(wd))&&(!e.end_day||iso<=e.end_day))return iso;d.setUTCDate(d.getUTCDate()+1)}return catalog.today>e.day?catalog.today:e.day}
+function serviceDate(){let e=currentEvent();return e.recurrence==='Daily'?$('service_date').value:e.day}
+async function refreshAvailability(){left={};showAvailability();try{left=await api('availability',{event_id:currentEvent().id,service_date:serviceDate()});$('dateHint').textContent=baseHint;$('dateHint').style.color=''}catch(e){if(currentEvent().recurrence==='Daily'){$('dateHint').textContent=e.message;$('dateHint').style.color='#b00020'}}showAvailability()}
+function selected(){return catalog.sevas.find(s=>s.id===$('seva').value*1)}
+function showAvailability(){let s=selected();if(!s||!s.daily_limit){$('avail').textContent='';return}let free=left[s.id];if(free===undefined||free===null){$('avail').textContent='Limit '+s.daily_limit+' per day';return}let inCart=lines.filter(l=>l.seva_id===s.id).reduce((a,l)=>a+l.quantity,0);$('avail').textContent=(free-inCart)+' of '+s.daily_limit+' slots free on '+serviceDate()}
+function price(){let s=selected();$('amount').value=s?(s.price/100).toFixed(2):'';$('amount').disabled=!s||s.kind!=='Sponsorship';showAvailability()}
+function add(){if(locked())return;let s=selected(),q=Number($('quantity').value),a=Number($('amount').value);if($('amount').value.trim()==='')return msg('Enter the amount.');if(!s||!Number.isInteger(q)||q<1||q>100||!Number.isFinite(a)||a<0)return msg('Check seva, quantity and amount.');let member=family?family.members.find(m=>m.id===$('person').value*1):null;lines.push({seva_id:s.id,quantity:q,amount:$('amount').value,member_id:member?member.id:null,who:member?member.name:($('devotee').value.trim()||'main devotee')});$('quantity').value=1;renderCart();msg('')}
+function addAll(){if(locked()||!family)return;let keep=$('person').value;family.members.forEach(m=>{$('person').value=m.id;add()});$('person').value=keep}
+function clearCart(){if(locked())return;lines=[];renderCart()}
+function removeLine(i){if(locked())return;lines.splice(i,1);renderCart()}
+function renderCart(){$('cart').replaceChildren();let total=0;lines.forEach((l,i)=>{let s=catalog.sevas.find(x=>x.id===l.seva_id),div=document.createElement('div');div.className='line';div.textContent=l.quantity+' × '+s.name+' — for '+l.who+' · '+(Number(l.amount)*l.quantity).toFixed(2)+' ';let x=document.createElement('a');x.href='#';x.textContent='remove';x.onclick=ev=>{ev.preventDefault();removeLine(i)};div.append(x);$('cart').append(div);total+=Math.round(Number(l.amount)*100)*l.quantity});if(lines.length){let t=document.createElement('strong');t.textContent='Total: '+currentEvent().currency+' '+(total/100).toFixed(2);$('cart').append(t)}showAvailability()}
+
+let searchTimer=null,searchVersion=0;
+function scheduleSearch(){clearTimeout(searchTimer);let v=++searchVersion;searchTimer=setTimeout(()=>search(v),300)}
+async function search(v){let q=$('search').value.trim();if(q.length<2){$('results').replaceChildren();return}try{let rows=await api('devotees',{q});if(v!==searchVersion)return;$('results').replaceChildren();if(!rows.length){let p=document.createElement('small');p.textContent='No match. Enter the devotee below; tick "Save to register" to add them.';$('results').append(p)}rows.forEach(f=>{let div=document.createElement('div');div.className='pick';div.textContent='#'+f.id+' · '+f.head+(f.phone?' · '+f.phone:'')+(f.gotra?' · '+f.gotra:'')+' — '+f.members.map(m=>m.name).join(', ');let b=document.createElement('button');b.className='secondary';b.textContent='Use this devotee';b.onclick=()=>chooseFamily(f);div.append(b);$('results').append(div)})}catch(e){msg(e.message)}}
+function chooseFamily(f){if(locked())return;if(lines.some(l=>l.member_id))lines=[];family=f;let main=f.members.find(m=>m.relation==='Self')||f.members[0];$('devotee').value=main?main.name:f.head;$('devotee_kn').value=main?main.kannada:'';knManual=true;$('phone').value='';$('phone').placeholder='Register number '+(f.phone||'(none)')+' will be used';$('gotra').value=(main&&main.gotra)||f.gotra;$('rashi').value=main?main.rashi:'';$('nakshatra').value=main?main.nakshatra:'';$('person').replaceChildren(option('','Main devotee'));f.members.forEach(m=>$('person').append(option(m.id,m.name+' ('+m.relation+(m.gotra&&m.gotra!==f.gotra?', '+m.gotra:'')+')')));$('personBox').hidden=false;$('addAll').hidden=!f.members.length;$('saveBox').hidden=true;$('save_devotee').checked=false;$('chosen').hidden=false;$('chosenText').textContent='Register #'+f.id+' · '+f.head+' · '+f.members.length+' member(s)';$('results').replaceChildren();$('search').value='';renderCart()}
+function clearFamily(){if(pending)return msg('Retry the pending submission first.');$('phone').placeholder='Optional';if(lines.some(l=>l.member_id))lines=[];family=null;$('person').replaceChildren(option('','Main devotee'));$('personBox').hidden=true;$('addAll').hidden=true;$('saveBox').hidden=false;$('chosen').hidden=true;renderCart()}
+
+async function save(){try{if(!pending){if(knBusy)throw Error('Wait for the Kannada suggestion, review it, then save.');if(!$('devotee').value.trim()||!lines.length)throw Error('Enter devotee name and add sevas.');pending={request_key:randomKey(),event_id:currentEvent().id,service_date:serviceDate(),family_id:family?family.id:null,save_devotee:!family&&$('save_devotee').checked,devotee:$('devotee').value,phone:$('phone').value,gotra:$('gotra').value,devotee_kn:$('devotee_kn').value,rashi:acValue('rashi','Rashi'),nakshatra:acValue('nakshatra','Nakshatra'),note:$('note').value,items:lines.map(l=>({seva_id:l.seva_id,quantity:l.quantity,amount:l.amount,member_id:l.member_id}))}}$('submit').disabled=true;let r=await api('book',pending);msg('Booking #'+r.id+' saved for '+pending.service_date+'. Slips queued at the laptop. Payment not yet received.');pending=null;lines=[];knManual=false;knVersion++;clearTimeout(knTimer);['devotee','devotee_kn','phone','gotra','rashi','nakshatra','note'].forEach(x=>$(x).value='');$('save_devotee').checked=false;clearFamily();$('submit').textContent='Register and queue slips / ನೋಂದಾಯಿಸಿ';refreshAvailability()}catch(e){let network=e instanceof TypeError||e.retry;if(pending&&!network){pending=null;$('submit').textContent='Register and queue slips / ನೋಂದಾಯಿಸಿ';msg(e.message+'\nNothing was saved. Correct the details and save again.')}else if(!pending){msg(e.message)}else{msg(e.message+'\nIf connection failed, keep this page open and retry.');$('submit').textContent='Retry same booking'}}finally{$('submit').disabled=false}}
+function setMode(mode){$('counterMode').hidden=mode!=='counter';$('bookMode').hidden=mode!=='book';$('modeCounter').classList.toggle('active',mode==='counter');$('modeBook').classList.toggle('active',mode==='book');scrollTo(0,0);$('dateBox').hidden=mode!=='book'||currentEvent().recurrence!=='Daily';if(mode==='counter'){$('find').focus();if($('find').value.trim().length>=2)find()}}
+let findTimer=null,findVersion=0,lastFind=null;
+function scheduleFind(){clearTimeout(findTimer);let v=++findVersion;findTimer=setTimeout(()=>find(v),300)}
+function money(cur,v){return cur+' '+(v/100).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}
+async function find(v){let q=$('find').value.trim();lastFind={q};if(q.length<2){$('found').replaceChildren();return}try{let rows=await api('find',{q,event_id:currentEvent().id});if(v!==undefined&&v!==findVersion)return;renderFound(rows,'No booking found for "'+q+'" in this event. Check the spelling, try the phone number, or add a New booking.')}catch(e){msg(e.message)}}
+async function showUnpaid(){lastFind={unpaid:true};try{let rows=await api('find',{unpaid:true,event_id:currentEvent().id});renderFound(rows,'No unpaid bookings in this event.')}catch(e){msg(e.message)}}
+function refreshFound(){if(!lastFind)return;return lastFind.unpaid?showUnpaid():find()}
+function el(tag,cls,text){let x=document.createElement(tag);if(cls)x.className=cls;if(text!==undefined)x.textContent=text;return x}
+function renderFound(rows,empty){let box=$('found');box.replaceChildren();if(!rows.length){box.append(el('p','',empty));return}for(let b of rows){let card=el('div','card '+b.status);let title=el('h3','',b.devotee);let badge=el('span','badge '+b.status,b.status==='PAID'?'PAID · '+b.method:(b.status==='UNPAID'&&!b.total?'IN-KIND':b.status));title.append(' ',badge);card.append(title);card.append(el('div','',(b.ref?'Booking no. '+b.ref+' · ':'')+'#'+String(b.id).padStart(6,'0')+(b.phone?' · '+b.phone:'')));card.append(el('div','',b.sevas));card.append(el('div','big',money(b.currency,b.total)+(b.refunded?' (refunded '+money(b.currency,b.refunded)+')':'')));card.append(el('small','',b.printed?'Slips already printed':'Slips not printed yet'));
+if(b.status==='UNPAID'&&b.total>0&&catalog.can_pay){let row=el('div','row');let method=el('select');['Cash','UPI','Card','Bank transfer'].forEach(m=>method.append(option(m,m)));let pay=el('button','','Money received — mark PAID');pay.onclick=async()=>{if(!confirm('Received '+money(b.currency,b.total)+' by '+method.value+' from '+b.devotee+'?'))return;pay.disabled=true;try{await api('pay',{id:b.id,method:method.value});msg('✔ '+b.devotee+' marked PAID ('+method.value+'). Now send the slips to the printer.');await refreshFound()}catch(e){msg(e.message);pay.disabled=false}};row.append(method,pay);card.append(row)}
+if(b.status==='PAID'||b.status==='UNPAID'){let pr=el('button','secondary',b.printed?'Reprint slips at laptop':'Send slips to laptop printer');pr.onclick=async()=>{pr.disabled=true;try{await api('print',{id:b.id});msg('Sent to the laptop. Slips for '+b.devotee+' will print at the counter printer.');pr.textContent='Sent ✔'}catch(e){msg(e.message);pr.disabled=false}};card.append(pr)}
+box.append(card)}}
+
+let knTimer=null,knVersion=0,knManual=false,knBusy=false;
+function kannadaEdited(){knManual=true;knVersion++;clearTimeout(knTimer);knBusy=false}
+function scheduleKannada(){if(knManual)return;clearTimeout(knTimer);const version=++knVersion;knBusy=true;knTimer=setTimeout(()=>fetchKannada(version),250)}
+function regenerateKannada(){knManual=false;scheduleKannada()}
+async function fetchKannada(version){const text=$('devotee').value;try{const result=await api('transliterate',{text});if(version===knVersion&&!knManual)$('devotee_kn').value=result.suggestion}catch(e){if(version===knVersion)msg('Kannada suggestion unavailable. Check laptop connection or enter Kannada manually.')}finally{if(version===knVersion)knBusy=false}}
+function showCode(){$('qrOk').hidden=true;$('codeBox').hidden=false;$('code').focus()}
+(function readQr(){let m=/[#&]code=([^&]+)/.exec(location.hash)||/[?&]code=([^&]+)/.exec(location.search);if(m){let c=decodeURIComponent(m[1]);try{sessionStorage.setItem('devseva-code',c)}catch(e){}history.replaceState(null,'',location.pathname)}
+ let c=m?decodeURIComponent(m[1]):(()=>{try{return sessionStorage.getItem('devseva-code')}catch(e){return null}})();
+ if(c&&!$('code').value){$('code').value=c;$('codeBox').hidden=true;$('qrOk').hidden=false}
+ try{let n=localStorage.getItem('devseva-staff');if(n&&!$('staff').value)$('staff').value=n}catch(e){}
+ setTimeout(()=>($('code').value?($('staff').value?$('pin'):$('staff')):$('code')).focus(),50)})();
+setupAC('rashi');setupAC('nakshatra');showInstall();
+</script></html>

@@ -1,0 +1,30 @@
+#!/bin/bash
+# Finder launcher for the user's existing Python/Tk installation.
+APP_CONTENTS="$(cd -- "$(dirname -- "$0")/.." && pwd)"
+APP_RESOURCES="$APP_CONTENTS/Resources"
+APP_LOG_DIR="$HOME/Library/Logs/DevSeva"
+mkdir -p "$APP_LOG_DIR"
+APP_PYTHON=""
+for candidate in \
+  /Library/Frameworks/Python.framework/Versions/Current/bin/python3 \
+  /opt/homebrew/bin/python3 \
+  /usr/local/bin/python3 \
+  /usr/bin/python3; do
+  if [ -x "$candidate" ] && "$candidate" -c 'import sys, tkinter; sys.exit(0 if sys.version_info >= (3,10) else 1)' >/dev/null 2>&1; then
+    APP_PYTHON="$candidate"
+    break
+  fi
+done
+if [ -z "$APP_PYTHON" ]; then
+  /usr/bin/osascript -e 'display dialog "DevSeva could not locate Python 3.10 or later with Tk support. Send a screenshot of this message to get the launcher adjusted for your Mac. Your existing bookings have not been changed." buttons {"OK"} default button "OK" with title "DevSeva"'
+  exit 1
+fi
+cd -- "$APP_RESOURCES" || exit 1
+# Do not leave Python cache files inside the app bundle.
+export PYTHONDONTWRITEBYTECODE=1
+"$APP_PYTHON" app.py > "$APP_LOG_DIR/launch.log" 2>&1
+APP_RESULT=$?
+if [ "$APP_RESULT" -ne 0 ]; then
+  /usr/bin/osascript -e 'display dialog "DevSeva could not open. You can open the diagnostic log and share the error with support. Your database remains in its usual location." buttons {"Close", "Open log"} default button "Open log" with title "DevSeva"' | /usr/bin/grep -q 'Open log' && /usr/bin/open -a TextEdit "$APP_LOG_DIR/launch.log"
+fi
+exit "$APP_RESULT"

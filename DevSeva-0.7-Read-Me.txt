@@ -1,0 +1,56 @@
+DevSeva 0.7 — import pooja bookings + event-day counter
+
+BEFORE YOU UPDATE
+1. In DevSeva, click Backup database and save the backup on a USB drive.
+2. Quit DevSeva.
+3. Use the DevSeva.app in this folder (or extract DevSeva-0.7-Mac-App.zip), drag it into Applications and replace the old copy.
+   If macOS blocks it: System Settings > Privacy & Security > Open Anyway.
+Your data, staff logins and PINs stay as they are.
+
+FOR THE SRI SATYANARAYANA POOJA (25 OCTOBER 2026)
+
+A. Bring in the bookings you already have (Supervisor or Admin)
+   1. Click "Import bookings" at the top and choose "Sri Satyanarayana Pooja · 2026-10-25".
+   2. Excel / Google Sheet: "Open Excel / CSV file…". Check the column guesses at the top.
+      WhatsApp / PDF / photo of a paper form: copy the text, then "Paste text…".
+      Paper forms: "Add a paper form by hand…".
+   3. Check the preview:
+        Green  = ready
+        Yellow = check first (double-click to correct)
+        Blue   = will be marked paid
+        Grey   = already imported / repeated
+      Rows marked Paid in your list are recorded as "Paid before event".
+   4. Click "Import N ticked rows". Whenever new bookings arrive, import the updated list again —
+      nothing is ever doubled.
+   A ready-made sheet for the committee: samples/DevSeva-booking-import-template.xlsx
+
+B. On the day (Reception, Cashier, Supervisor or Admin)
+   Laptop: open the "Event-day counter" tab and type the devotee's name, phone, email or booking number.
+     - Unpaid (yellow): "Collect cash + print slips" (or "Paid by UPI / card / bank…").
+     - Already paid (green): "Print slips only".
+     - Confirm when the slips have printed. Reprints are marked REPRINT.
+   Phones: Supervisor/Admin starts "Mobile access". Volunteers log in and use Counter mode:
+     search > "Money received — mark PAID" > "Send slips to laptop printer".
+     The laptop's "Print requests from phones" button shows what to print.
+   Each person sees "Collected today by …" for the cash handover.
+   The Reports tab has a CASH HANDOVER section per person and payment method.
+
+C. Before the event, please test with 2–3 sample bookings: import, search, print one slip on the real
+   printer, and mark one as paid. Then cancel the test bookings (Supervisor) or restore your backup.
+
+ALSO IN 0.7 (from your review)
+- Each mobile number can be registered only once. If you enter it again, DevSeva offers to add the person
+  to the existing family. Existing duplicates (such as the two "Raviraj Shetty" entries) show a warning
+  in the Devotees tab: click "Merge duplicates…" to combine them.
+- Email ID field for each family.
+- Rashi / Nakshatra: just start typing ("kar" → Karkataka, "ash" → Ashwini / Ashlesha). ↑/↓ and Enter pick.
+- New booking: type a name, phone or gotra in "Devotee register" and press Enter or Find….
+- Enter = Save / OK, Esc = close, in every window. Cmd+N new booking, Cmd+F search, Cmd+L log out.
+- Tooltips on the main buttons; "Log out" button at the top right.
+- Phones: iPhone and Android styles, bottom tab bar, and an app icon via "Add to Home Screen".
+
+NOTE: Reception logins can now mark bookings paid (for the event-day counters). Refunds and corrections
+still need a Supervisor or Admin.
+
+Sample files to try the import with are in the "samples" folder next to this file.
+Full details are in DevSeva.app > Contents > Resources > README.md.

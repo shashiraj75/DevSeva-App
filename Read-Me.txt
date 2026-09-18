@@ -1,0 +1,25 @@
+Seva Desk — double-click Mac launcher
+
+1. Quit the previous Seva Desk window first. Save a database backup if you have entered records.
+2. Double-click the downloaded ZIP to extract it.
+3. Drag SevaDesk.app into Applications.
+4. Double-click SevaDesk in Applications. You can also keep it in your Dock.
+
+No Terminal commands are needed. This launcher uses the Python/Tk already installed on your Mac; it is not a self-contained Python installer.
+
+It uses the same existing database under Library/Application Support/SevaDeskPrototype in your home folder. Moving the app does not move or delete the database.
+
+Includes offline Kannada suggestions and receipts without UNPAID wording.
+
+This is an unsigned prototype app, not a notarized commercial release. macOS may block it or ask for confirmation. If it does, send a screenshot of the exact message for guidance. The launcher was structurally checked here but has not been run on your Mac.
+
+The app searches common Python installation locations. If it cannot find your installed Python, it displays a message without asking you to use Terminal. Errors opening the app offer a button to open a diagnostic log.
+
+
+VERSION 0.4 — KANNADA CATEGORY FIX
+
+Quit the old app, back up your data, then replace SevaDesk in Applications with this copy. It uses your existing database. No Terminal commands are needed. macOS may request Open Anyway again for the new unsigned copy.
+
+To fix the existing Consumables entry: open Event and seva masters, select Consumables, click Edit selected seva, click Use Kannada glossary, review ಬಳಕೆ ಸಾಮಗ್ರಿಗಳು, then Save.
+
+Known event/category phrases now translate by meaning. Unknown categories ask for manual Kannada instead of producing a phonetic guess. Saved corrections are remembered for future entries. Personal names retain an editable phonetic suggestion. Historical receipts are preserved.

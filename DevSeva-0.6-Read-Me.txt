@@ -1,0 +1,36 @@
+DevSeva 0.6 — staff logins, refunds, encrypted phones, restore
+
+BEFORE YOU UPDATE
+1. In DevSeva 0.5, click Backup database and save the backup somewhere safe (USB drive).
+2. Quit DevSeva completely.
+
+INSTALL
+3. Use the DevSeva.app in this folder (or extract DevSeva-0.6-Mac-App.zip).
+4. Drag DevSeva.app into Applications and replace the 0.5 copy.
+5. Double-click DevSeva. If macOS blocks it, open System Settings > Privacy & Security, click Open Anyway, and confirm.
+
+FIRST START
+- DevSeva asks you to create the ADMINISTRATOR login (your name and a 4–12 digit PIN). Remember this PIN: only an Admin can add staff or reset PINs.
+- Then open Staff logins and add each volunteer with a role:
+    Reception  = bookings and the devotee register only
+    Cashier    = + receive payments, reports
+    Supervisor = + refunds, cancellations, corrections, phone access, backups
+    Admin      = everything, including masters, staff and restore
+- Your existing data (same database as before) is upgraded automatically and kept.
+
+WHAT'S NEW
+- Everyone logs in with their own PIN. The screen locks after 15 idle minutes, or when you click Lock.
+- Refund… (full or partial), Correct payment method…, and Correct details / date…. Each needs a reason and is recorded in the audit log.
+- Reprinted slips are marked REPRINT.
+- Each family member can have their own gotra.
+- Booking history suggests older bookings that belong to the family, and you can link them.
+- Phones use an encrypted (https) connection. Each phone shows a one-time "not private" warning: tap Advanced > Proceed. Staff then log in with the access code shown on the laptop plus their own name and PIN.
+- Restore backup is now inside the app, and a backup is saved automatically every time you quit (the last 10 are kept).
+- The bookings list stays fast with thousands of bookings (use Show more).
+
+NO-PYTHON VERSION (optional)
+Double-click "Build Standalone DevSeva.command" (keep it next to DevSeva.app) with internet on. Terminal opens and works for 2–5 minutes; you don't type anything. It creates a "DevSeva Standalone" folder with a DevSeva.app that runs on Macs without Python, plus a ZIP to share. If macOS blocks the .command file the first time, use Privacy & Security > Open Anyway.
+Without a paid Apple Developer account, the standalone app still needs Open Anyway once on each Mac.
+
+Full details are in DevSeva.app > Contents > Resources > README.md.
+If DevSeva does not open, it offers to show a diagnostic log (Library/Logs/DevSeva/launch.log). Send a screenshot of that log for help.

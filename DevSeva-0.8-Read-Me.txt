@@ -1,0 +1,51 @@
+DevSeva 0.8 — brand + event banner, developer-only factory reset, copyright
+© 2026 Raviraj Shetty. All rights reserved.
+
+WHAT'S NEW
+• The DevSeva logo and name are at the top left, with your temple's name under them.
+• A large maroon banner shows the event name, weekday, date, venue and a countdown
+  ("in 39 days", "Tomorrow", "TODAY"). Use "Change event" on the banner to switch events;
+  the counter tab follows. Phones show the same event card.
+• Masters → "Temple / organisation details…" sets the temple name shown on screen and receipts.
+• Copyright is shown in the status bar, login screen, About, receipts, phone page and QR sheet.
+  Licence terms: NOTICE.txt.
+• "Add every member" is greyed out until you pick a register family with Find….
+  For a new devotee, "Add seva line" and then Save booking is all you need.
+
+BEFORE YOU UPDATE
+1. In DevSeva, click Backup database and save the backup on a USB drive.
+2. Quit DevSeva.
+3. Use the DevSeva.app in this folder (or extract DevSeva-0.8-Mac-App.zip).
+Your data, staff logins and PINs stay as they are.
+4. Open DevSeva, go to Masters → "Temple / organisation details…" and enter your temple's name.
+
+DO THIS ONCE — YOUR DEVELOPER PASSPHRASE (only you should know it)
+1. Open DevSeva. Press Command+Shift+D, or click the grey "DevSeva 0.8 · ©…" text at the
+   bottom right 5 times quickly.
+2. Answer Yes and create a passphrase of at least 10 characters, e.g. three words and a number.
+   Write it down somewhere safe. It is saved inside DevSeva.app, not in the temple data.
+3. Always do this BEFORE you copy, share or sell DevSeva.
+   The standalone builder will not run without it.
+   Nobody can change it without knowing the current passphrase.
+
+DEVELOPER TOOLS (same shortcut + passphrase)
+• Factory reset — erases ALL data so the copy can go to a new temple:
+  bookings, devotees, events, sevas, staff, settings and the audit log.
+  - It first asks where to save a final backup.
+  - It can also delete the automatic backups and the phone certificate.
+  - You must type RESET.
+  - DevSeva then opens at first-time setup (temple name + Admin login).
+• Reset a customer Admin PIN — for a temple that forgot its Admin PIN. Their data stays.
+• Change developer passphrase.
+5 wrong passphrases lock the tools for 15 minutes.
+
+GIVING DEVSEVA TO ANOTHER TEMPLE
+1. Set your developer passphrase (above).
+2. Double-click "Build Standalone DevSeva.command".
+3. Give them the ZIP from the "DevSeva Standalone" folder. It carries your passphrase lock
+   and needs no Python.
+4. On their laptop, DevSeva starts with first-time setup.
+(Never copy your own data folder: ~/Library/Application Support/SevaDeskPrototype.)
+
+Everything from 0.7.1 (importing bookings, event-day counter, phone QR login) works as before;
+see README.md inside the app for details.

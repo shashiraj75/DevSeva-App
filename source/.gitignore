@@ -1,0 +1,14 @@
+# Python and test by-products
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local developer credential: it belongs only in a release bundle.
+developer.key
+
+# macOS and generated releases
+.DS_Store
+dist/
+build/
+*.app/
+*.zip

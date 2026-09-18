@@ -1,0 +1,44 @@
+DevSeva / ದೇವಸೇವೆ — offline temple desk
+Copyright © 2026 Raviraj Shetty. All rights reserved.
+
+This software (the DevSeva program files, phone page, icons and documentation)
+is proprietary. It is licensed, not sold, to the temple or organisation named
+in the app. Unless the copyright holder has agreed otherwise in writing:
+
+  • You may install and use it on the computers of the licensed organisation.
+  • You may not copy, resell, rent, publish or give it to anyone else.
+  • You may not remove or change the copyright notices, or bypass the
+    developer-only functions.
+
+The data you enter (bookings, devotees, payments) belongs to the organisation
+that entered it and stays on its own computers.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. Keep regular
+backups.
+
+Contact: Raviraj Shetty
+
+--------------------------------------------------------------------------
+Third-party components
+--------------------------------------------------------------------------
+QR Code generator library (qrcodegen.py)
+Copyright (c) Project Nayuki. (MIT License)
+https://www.nayuki.io/page/qr-code-generator-library
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+- The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+- The Software is provided "as is", without warranty of any kind, express or
+  implied, including but not limited to the warranties of merchantability,
+  fitness for a particular purpose and noninfringement. In no event shall the
+  authors or copyright holders be liable for any claim, damages or other
+  liability, whether in an action of contract, tort or otherwise, arising from,
+  out of or in connection with the Software or the use or other dealings in the
+  Software.
+
+Python and Tcl/Tk are used under their own open-source licences.

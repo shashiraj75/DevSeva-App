@@ -1,0 +1,7 @@
+Booking Receipt
+Booking No: SSP-011
+Devotee Name: Kavitha Rai
+Contact: 050 444 5566
+Seva: Satyanarayana Pooja
+Amount: AED 50.00
+Payment Status: Paid (Card)
