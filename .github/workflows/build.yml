@@ -22,7 +22,8 @@ jobs:
 
     - name: Build EXE
       run: |
-        pyinstaller --onefile --windowed source/app.py
+         pyinstaller --onefile --windowed --paths=source source/app.py
+y
 
     - name: Automatically Create Production Release
       uses: softprops/action-gh-release@v2
@@ -34,4 +35,5 @@ jobs:
         files: dist/app.exe
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
