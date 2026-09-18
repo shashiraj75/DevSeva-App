@@ -113,11 +113,6 @@ def local_addresses():
     return sorted(ip for ip in found if not ip.startswith('127.') and not ip.startswith('169.254.'))
 
 
-def find_openssl():
-    for candidate in ('/usr/bin/openssl', shutil.which('openssl')):
-        if candidate and os.access(candidate, os.X_OK):
-            return candidate
-    return None
 
 
 def fingerprint(cert_path):
@@ -146,30 +141,85 @@ def ensure_certificate(folder, addresses=None):
         pass
     openssl = find_openssl()
     if not openssl:
-        raise RuntimeError('The openssl tool was not found, so the encrypted connection is unavailable.')
-    ips = [ip for ip in names if _is_ip(ip)]
-    alt_lines = [f'IP.{i} = {ip}' for i, ip in enumerate(ips, 1)] + ['DNS.1 = localhost', f'DNS.2 = {host}.local']
-    config = '\n'.join([
-        '[req]', 'distinguished_name = dn', 'x509_extensions = ext', 'prompt = no',
-        '[dn]', f'CN = DevSeva {host}', 'O = DevSeva offline desk',
-        '[ext]', 'basicConstraints = critical,CA:FALSE', 'keyUsage = critical,digitalSignature,keyEncipherment',
-        'extendedKeyUsage = serverAuth', 'subjectAltName = @alt',
-        '[alt]', *alt_lines, ''])
-    with tempfile.TemporaryDirectory() as tmp:
-        conf = Path(tmp) / 'devseva.cnf'
-        conf.write_text(config)
-        new_cert, new_key = Path(tmp) / 'c.pem', Path(tmp) / 'k.pem'
-        result = subprocess.run([openssl, 'req', '-x509', '-newkey', 'rsa:2048', '-sha256', '-nodes', '-days', '825',
-                                 '-keyout', str(new_key), '-out', str(new_cert), '-config', str(conf)],
-                                capture_output=True, text=True, timeout=60)
-        if result.returncode != 0 or not new_cert.exists():
-            raise RuntimeError('Could not create the encryption certificate: ' + (result.stderr or result.stdout)[-300:])
-        ssl.create_default_context(ssl.Purpose.CLIENT_AUTH).load_cert_chain(new_cert, new_key)
-        shutil.copyfile(new_key, key)
-        os.chmod(key, 0o600)
-        shutil.copyfile(new_cert, cert)
-    meta.write_text(json.dumps({'addresses': names}))
+        # ----------------- NATIVE PYTHON ENCRYPTION GENERATION -----------------
+    from cryptography import x509
+    from cryptography.x509.oid import NameOID
+    from cryptography.hazmat.primitives import hashes, serialization
+    from cryptography.hazmat.primitives.asymmetric import rsa
+    import datetime
+    import ipaddress
+
+    # Generate Private Key in System Memory
+    private_key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+
+    # Configure Issuer & Subject Profiles
+    subject = issuer = x509.Name([
+        x509.NameAttribute(NameOID.COMMON_NAME, f"DevSeva {host}"),
+        x509.NameAttribute(NameOID.ORGANIZATION_NAME, u"DevSeva offline desk"),
+    ])
+
+    # Setup Dynamic Subject Alternative Names (SANs) for IPs and Hostnames
+    san_list = [x509.DNSName(u"localhost"), x509.DNSName(f"{host}.local")]
+    for name in names:
+        try:
+            ip_obj = ipaddress.ip_address(name)
+            san_list.append(x509.IPAddress(ip_obj))
+        except ValueError:
+            san_list.append(x509.DNSName(name))
+
+    # Build the Self-Signed Certificate
+    cert_builder = x509.CertificateBuilder().subject_name(
+        subject
+    ).issuer_name(
+        issuer
+    ).public_key(
+        private_key.public_key()
+    ).serial_number(
+        x509.random_serial_number()
+    ).not_valid_before(
+        datetime.datetime.utcnow() - datetime.timedelta(days=1)
+    ).not_valid_after(
+        datetime.datetime.utcnow() + datetime.timedelta(days=825)
+    ).add_extension(
+        x509.BasicConstraints(ca=False, path_length=None), critical=True
+    ).add_extension(
+        x509.KeyUsage(
+            digital_signature=True,
+            content_commitment=False,
+            key_encipherment=True,
+            data_encipherment=False,
+            key_agreement=False,
+            key_cert_sign=False,
+            crl_sign=False,
+            encipher_only=False,
+            decipher_only=False
+        ), critical=True
+    ).add_extension(
+        x509.ExtendedKeyUsage([x509.oid.ExtendedKeyUsageOID.SERVER_AUTH]), critical=False
+    ).add_extension(
+        x509.SubjectAlternativeName(san_list), critical=False
+    )
+
+    cert = cert_builder.sign(private_key, hashes.SHA256())
+
+    # Write Private Key File (.key)
+    with open(key, "wb") as f:
+        f.write(private_key.private_bytes(
+            encoding=serialization.Encoding.PEM,
+            format=serialization.PrivateFormat.TraditionalOpenSSL,
+            encryption_algorithm=serialization.NoEncryption()
+        ))
+    os.chmod(key, 0o600)
+
+    # Write Certificate File (.crt)
+    with open(cert, "wb") as f:
+        f.write(cert.public_bytes(serialization.Encoding.PEM))
+
+    # Save Meta Registry Configuration JSON file
+    meta.write_text(json.dumps({'addresses': list(names)}))
+    
     return cert, key
+
 
 
 def _is_ip(value):
