@@ -25,15 +25,13 @@ jobs:
          pyinstaller --onefile --windowed --paths=source source/app.py
 y
 
-    - name: Automatically Create Production Release
+        - name: Automatically Create Production Release
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: v0.8.${{ github.run_number }}
+        tag_name: build-${{ github.run_number }}
         name: DevSeva Windows Production Release Build #${{ github.run_number }}
         draft: false
         prerelease: false
         files: dist/app.exe
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
