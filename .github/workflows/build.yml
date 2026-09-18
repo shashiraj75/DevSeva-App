@@ -1,5 +1,8 @@
 name: Build Windows EXE
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -15,15 +18,20 @@ jobs:
 
     - name: Install Dependencies
       run: |
-        pip install pyinstaller
+        pip install pyinstaller cryptography openpyxl qrcode Pillow
 
     - name: Build EXE
       run: |
         pyinstaller --onefile --windowed source/app.py
 
-    - name: Upload Finished EXE
-      uses: actions/upload-artifact@v4
+    - name: Automatically Create Production Release
+      uses: softprops/action-gh-release@v2
       with:
-        name: devseva-windows
-        path: dist/app.exe
+        tag_name: v0.8.${{ github.run_number }}
+        name: DevSeva Windows Production Release Build #${{ github.run_number }}
+        draft: false
+        prerelease: false
+        files: dist/app.exe
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
